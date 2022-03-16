@@ -21,15 +21,22 @@ use App\Http\Controllers\ProductoController;
 Route::get('/', [PageController::class,'home']);
 Route::get('/quienes-somos', [PageController::class,'quienesSomos']);
 Route::get('/contacto', [PageController::class,'contacto']);
+Route::post('/contacto', [PageController::class,'storeMensaje']);
 
 
 // CRUD DE PRODUCTOS 7 RUTAS
 
-route::get('/productos',[ProductoController::class,'index'])->name('productos.index');
-route::get('/productos/create',[ProductoController::class,'create'])->name('productos.create');
-route::post('/productos',[ProductoController::class,'store'])->name('productos.store');
+// Route::get('/productos',[ProductoController::class,'index'])->name('productos.index');
+// Route::get('/productos/create',[ProductoController::class,'create'])->name('productos.create');
+// Route::post('/productos',[ProductoController::class,'store'])->name('productos.store');
+// Route::get('/productos/{producto}',[ProductoController::class,'show'])->name('productos.show');
+// Route::get('/productos/{producto}/edit',[ProductoController::class,'edit'])->name('productos.edit');
+// Route::patch('/productos/{producto}',[ProductoController::class,'update'])->name('productos.update');
+// Route::delete('/productos/{producto}',[ProductoController::class,'destroy'])->name('productos.destroy');
 
+// EN UNA SOLA LINEA TODAS LAS RUTAS DEL CRUD
 
+Route::resource('productos',ProductoController::class);
 
 
 // Route::get('/quienes somos', function () {

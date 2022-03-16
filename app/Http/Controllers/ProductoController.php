@@ -35,8 +35,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view ('productos.create');
-        //
+        return view ('productos.create');     
     }
 
     /**
@@ -47,7 +46,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $producto=Producto::create([
+        $producto = Producto::create([
             'nombre'=> $request->nombre,
             'descripcion'=> $request->descripcion,
             'precio'=> $request-> precio
@@ -64,7 +63,8 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //
+        return view('productos.show',compact('producto'));
+        
     }
 
     /**
@@ -75,7 +75,7 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        return view('productos.edit',compact('producto'));
     }
 
     /**
@@ -87,7 +87,13 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+        $producto->update([
+            'nombre'=> $request->nombre,
+            'descripcion'=> $request->descripcion,
+            'precio'=> $request->precio 
+        ]);
+        return \redirect()->route('productos.index')->with('status',"Se editó el producto $producto->nombre corectamente");
+
     }
 
     /**
@@ -98,6 +104,9 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('productos.index')->with('status',"Se borró el producto $producto->nombre corectamente");
+
+
     }
 }

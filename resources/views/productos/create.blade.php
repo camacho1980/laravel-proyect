@@ -1,10 +1,12 @@
 @extends('layout')
-@section('title','Todos los productos')
+@section('title','Crear un producto')
 @section('contenido')
 <div class="col-12 mx-auto my-5">
     <h1>Crear un Producto</h1>
+    
     {{-- copiamos y pegamos un formulario de bootstrap modificamos la ruta y metos POST --}}
-    <form action="{{ route('productos.store')}}" method="POST">
+
+    <form action="{{route('productos.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
