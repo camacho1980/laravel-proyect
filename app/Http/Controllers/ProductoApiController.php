@@ -57,9 +57,32 @@ class ProductoApiController extends Controller
                 "codigo"=>201
             ],
             'data'=> $producto
-        ],201);
-    
-        // return request()->all();
-        // return 'guardar un registro';
+        ],201);     
     }
+// ACTUALIZAR UPDATE PUEDE QUE NO ENTREGUEN TODOS LOS DATOS. VER EL FILLABLE.
+
+    public function update(Producto$producto){
+        $producto->update(request()->all());
+        return response([
+            "meta"=>[
+                "mensaje"=>"Se actualizó el producto $producto->nombre",
+                "codigo"=> 201
+            ],
+            'data'=> $producto
+        ],201);
+        
+    }
+// BORRAR UN PRODUCTO
+    public function destroy(Producto$producto){
+        $producto->delete();
+        return response([
+            "meta"=>[
+                "mensaje"=>"Se borró el producto $producto->nombre",
+                "codigo"=> 201
+            ],
+            'data'=> $producto
+        ],201);
+        
+    }
+
 }

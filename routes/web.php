@@ -23,6 +23,9 @@ Route::get('/quienes-somos', [PageController::class,'quienesSomos']);
 Route::get('/contacto', [PageController::class,'contacto']);
 Route::post('/contacto', [PageController::class,'storeMensaje']);
 
+Route::get('/mensaje', [PageController::class,'mensaje'])->name('mensaje');
+
+
 
 // CRUD DE PRODUCTOS 7 RUTAS
 
